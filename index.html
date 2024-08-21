@@ -544,7 +544,7 @@
             <p>🍱오늘의 급식 점수는?</p>
             <div class="feature-icon" id="meal-score">대기중</div>
             <p>* 해당 점수는 AI의 주관적인 평가입니다.</p>
-            <button class="cta-button open-modal">급식 확인</button>
+            <button id="check-meal" class="cta-button">급식 확인</button>
         </div>
         <div class="feature">
             <p>📚수행평가 도우미</p>
@@ -757,20 +757,32 @@
             document.getElementById('meal-info').innerHTML = '<div>급식 정보를 가져오는 데 실패했습니다.</div>';
         });
 
-    // 모달 관련 스크립트
-    document.querySelectorAll('.open-modal').forEach(button => {
-        button.addEventListener('click', () => {
-            const modalId = button.getAttribute('data-modal');
-            document.getElementById(modalId).style.display = 'block';
-        });
-    });
+        // 스크롤 이동을 위한 함수
+        function scrollToMealInfo() {
+            const mealInfoSection = document.getElementById('meal-info');
+            if (mealInfoSection) {
+                mealInfoSection.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
 
-    document.querySelectorAll('.modal-close').forEach(span => {
-        span.addEventListener('click', () => {
-            const modalId = span.getAttribute('data-modal');
-            document.getElementById(modalId).style.display = 'none';
+        // 버튼 클릭 이벤트 리스너
+        document.getElementById('check-meal').addEventListener('click', scrollToMealInfo);
+
+        // 모달 관련 스크립트
+        document.querySelectorAll('.open-modal').forEach(button => {
+            button.addEventListener('click', () => {
+                const modalId = button.getAttribute('data-modal');
+                document.getElementById(modalId).style.display = 'block';
+            });
         });
-    });
+
+        document.querySelectorAll('.modal-close').forEach(span => {
+            span.addEventListener('click', () => {
+                const modalId = span.getAttribute('data-modal');
+                document.getElementById(modalId).style.display = 'none';
+            });
+        });
+
     </script>
 </body>
 </html>

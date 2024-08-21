@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Deogle - 당신의 AI선생님</title>
+    <title>Deogle Ai - 당신의 AI선생님</title>
     <style>
 
         @font-face {
@@ -28,10 +28,10 @@
         }
 
         header {
-            background: #ffffff;
-            color: #333;
+            background: #000000;
+            color: #33333300;
             padding: 20px 0;
-            border-bottom: 1px solid #e1e1e1;
+            border-bottom: 1px solid #000000;
             opacity: 0;
             transform: translateY(-20px);
             animation: fadeInDown 0.6s forwards;
@@ -59,7 +59,7 @@
         }
 
         .nav-links a {
-            color: #333;
+            color: #ffffff;
             text-decoration: none;
             font-size: 1em;
             transition: color 0.3s ease;
@@ -524,7 +524,7 @@
     <!-- 헤더 -->
     <header>
         <nav>
-            <div class="logo">DEOGLE</div>
+            <div class="logo">DEOGLE <span style="color: #007aff;">Ai</span></div>
             <ul class="nav-links">
                 <li><a href="#hero" class="scroll-link">HOME</a></li>
                 <li><a href="#meal-info" class="scroll-link">오늘의 급식</a></li>
@@ -536,7 +536,7 @@
     <!-- 히어로 섹션 -->
     <section id="hero" class="hero">
         <div class="hero-content">
-            <h1>편리한 덕인생활,<br>Deogle</h1>
+            <h1>편리한 덕인생활,<br><span style="color: #01e188">DEOGLE</span> <span style="color: #007aff;">Ai</span></h1>
            <p>가장 진보된 AI <span style="color: #007aff;">messaGPT</span> 와 함께하는 학교생활</p>
            <a  href="https://xn----bs8e5np8ysmp0pkj1g.kro.kr/" class="cta-button">덕인 커뮤니티 입장</a>
         </div>
@@ -559,25 +559,25 @@
         </div>
         <div class="feature">
             <p style="text-align:left">🥳오늘의 운세</p>
-            <p style="color: #007aff;text-align:left;" >messaGPT</p>
             <div id="academic-luck" style="text-align:left;">당신의 오늘 운세를 상상하고 있습니다...</div>
+            <p style="color: #007aff;text-align:left;" ><span style="color: black;">with </span>messaGPT</p>
         </div>
     </section>
 
+    <!-- messaGPT 색션 -->
+    <section id="donor-list" class="donor-list">
+        <h2>가장 진보된 AI <span style="color: #007aff;">messaGPT</span></h2>
+        <p>대화할 사람에게 편지를 작성하고 대화해보세요.</p>
+        <a href="https://messagpt-chat.kro.kr" class="cta-button">지금 시작하기</a>
+    </section>
+
+    <br>
+    
     <!-- 연락처 섹션 -->
     <section id="contact" class="contact">
         <h2 style="text-align:left">⚙️</h2>
         <h2 style="text-align:left">step1</h2>
         <p style="text-align:left">문의사항이 있으시면 언제든지 연락주세요.</p>
-    </section>
-
-    <br>
-
-    <!-- 기부자 명단 섹션 -->
-    <section id="donor-list" class="donor-list">
-        <h2>가장 진보된 AI <span style="color: #007aff;">messaGPT</span></h2>
-        <p>대화할 사람에게 편지를 작성하고 대화해보세요.</p>
-        <a href="https://messagpt-chat.kro.kr" class="cta-button">지금 시작하기</a>
     </section>
 
     <br>
@@ -600,6 +600,27 @@
             <p>email : ybb1833@naver.com</p>
             <p>1학년실 황규호(정보)선생님에게 문의하세요.</p>
             <!--상황에 맞춰서 수정 가능-->
+        </div>
+    </div>
+
+    <!-- 개인정보 처리 방침 모달 -->
+    <div id="privacy-modal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close" data-modal="privacy-modal">&times;</span>
+            <h2>개인정보 처리 방침</h2>
+            <div id="privacy-content">
+                <p>Deogle은(는) 사용자의 개인정보 보호를 중요시하며, 개인정보 보호를 위해 최선을 다하고 있습니다. 본 개인정보 처리방침은 Deogle 커뮤니티 사이트(이하 "사이트")에서 개인정보를 어떻게 수집하고, 사용하는지, 그리고 ChatGPT API를 이용하여 사용자 데이터를 어떻게 처리하는지에 대한 내용을 설명합니다.</p>
+            </div>
+            <button id="next-button" class="cta-button">➜</button>
+        </div>
+    </div>
+    
+    <!-- 이용 약관 모달 -->
+    <div id="terms-modal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close" data-modal="terms-modal">&times;</span>
+            <h2>이용 약관</h2>
+            <p>여기에 이용 약관 내용을 입력하세요.</p>
         </div>
     </div>
 
@@ -634,6 +655,7 @@
 
     <footer>
         <p>&copy; Programing by HACKER</p>
+        <p><a href="#" class="open-modal" data-modal="privacy-modal">개인정보 처리방침</a> | <a href="#" class="open-modal" data-modal="terms-modal">이용 약관</a></p>
     </footer>
 
     <!-- JavaScript -->
@@ -684,16 +706,16 @@
                     const dishName = meal.DDISH_NM.replace(/\n/g, '<br>'); // 줄바꿈 변환
 
                     if (mealDate.includes('조식')) {
-                        mealData['조식'] = `<div>${dishName}</div>`;
+                        mealData['<span style="color: #007aff;">🍳<br>조식</span>'] = `<div>${dishName}</div>`;
                     } else if (mealDate.includes('중식')) {
-                        mealData['중식'] = `<div>${dishName}</div>`;
+                        mealData['<span style="color: #007aff;">🍙<br>중식</span>'] = `<div>${dishName}</div>`;
                     } else if (mealDate.includes('석식')) {
-                        mealData['석식'] = `<div>${dishName}</div>`;
+                        mealData['<span style="color: #007aff;">🍗<br>석식</span>'] = `<div>${dishName}</div>`;
                     }
                 });
 
                 // HTML에 급식 정보와 날짜 추가
-                let mealHtml = `<h3>${formattedDate}</h3>`;
+                let mealHtml = `<h3>${formattedDate}<br><div class="feature-icon">오늘 식단</div></h3>`;
                 for (const [mealType, content] of Object.entries(mealData)) {
                     if (content) { // 빈 문자열이 아닐 경우에만 출력
                         mealHtml += `<h3>${mealType}</h3>${content}`;
@@ -850,6 +872,42 @@
 
         // 페이지 로드 시 학업운 정보를 가져옵니다.
         document.addEventListener('DOMContentLoaded', fetchAcademicLuck);
+
+    // 개인정보 처리방침 내용 배열
+    const privacyContents = [
+            `<p>1. 개인정보 수집</p>
+            <p>Deogle은(는) 사용자의 개인정보를 직접 수집하지 않습니다. 하지만, 사용자가 사이트 내에서 ChatGPT API를 통해 상호작용할 때, OpenAI의 서버를 통해 데이터가 처리됩니다.</p>`,
+            
+            `<p>2. 수집하지 않는 개인정보의 종류</p>
+            <p>개인 식별 정보: 이름, 이메일 주소, 전화번호 등</p>
+            <p>기타 개인정보: 사용자 계정 정보, 로그인 정보, 사용자의 활동 기록 등</p>`,
+            
+            `<p>3. 개인정보의 사용 목적</p>
+            <p>본 사이트는 개인정보를 수집하지 않으며, ChatGPT API를 통해 제공된 데이터는 다음과 같은 목적에 사용됩니다:</p>
+            <ul>
+                <li>사용자 질문에 대한 적절한 답변 제공</li>
+                <li>커뮤니티 기능 및 지원 제공</li>
+            </ul>`,
+            
+            `<p>4. 개인정보의 보관 및 처리</p>
+            <p>Deogle은(는) 사용자의 개인정보를 보관하지 않으며, OpenAI의 서버를 통해 일시적으로 처리되는 데이터는 일회성으로 사용됩니다.</p>`,
+            
+            `<p>5. 개인정보 보호를 위한 노력</p>
+            <p>Deogle은(는) 개인정보 보호를 위해 다양한 보안 조치를 시행하고 있으며, 사용자의 데이터를 안전하게 보호하기 위해 최선을 다하고 있습니다.</p>`
+        ];
+
+        // 현재 표시된 내용의 인덱스
+        let currentContentIndex = 0;
+
+        document.getElementById('next-button').addEventListener('click', function() {
+            // 다음 내용이 있으면 표시하고, 없으면 닫기 버튼만 남김
+            currentContentIndex++;
+            if (currentContentIndex < privacyContents.length) {
+                document.getElementById('privacy-content').innerHTML = privacyContents[currentContentIndex];
+            } else {
+                document.getElementById('next-button').style.display = 'none';
+            }
+        });
 
     </script>
 </body>

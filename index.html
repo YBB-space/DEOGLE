@@ -954,9 +954,9 @@
                 덕인고 안에서 만들어진 혁신,
             </span>
         </h2>
-        <p style="margin-left: 80px;">덕인고등학교 HACKER 동아리 학생들이 주도하여 개발한 혁신적인 플랫폼입니다.<br>학생들이 직접 참여하여 의견을 나누고, 서로의 경험을 통해 성장할 수 있는 공간을 제공합니다.<br> AI 기술을 활용하여 맞춤형 학습 지원과 정보 검색이 가능하여 단순한 커뮤니티를 넘어,<br>학교 생활을 더욱 풍요롭게 만드는 혁신적인 플랫폼 입니다.<br><br><br><br><br><br></p>
+        <p style="margin-left: 80px;">덕인고등학교 <span onclick="location.href='http://easter-egg-game.kro.kr/'"; style="color:#03de12">HACKER</span> 동아리 학생들이 주도하여 개발한 혁신적인 플랫폼입니다.<br>학생들이 직접 참여하여 의견을 나누고, 서로의 경험을 통해 성장할 수 있는 공간을 제공합니다.<br> AI 기술을 활용하여 맞춤형 학습 지원과 정보 검색이 가능하여 단순한 커뮤니티를 넘어,<br>학교 생활을 더욱 풍요롭게 만드는 혁신적인 플랫폼 입니다.<br><br><br><br><br><br></p>
         <h2 style="margin-left: 100px; color: #ffffff;">매일이 즐거운<br><span style="color:#de03cc">커뮤니티</span></h2>
-        <p style="margin-left: 80px;">DEOGLE 커뮤니티와 함께라면 매일이 새로운 발견과 즐거움으로 가득합니다.<br>당신의 학교 생활을 더 나은 경험으로 만들어 드립니다!<br><br><br><br><br><br></p>
+        <p style="margin-left: 80px;"><span style="color: #01e188;">DEOGLE</span> 커뮤니티와 함께라면 매일이 새로운 발견과 즐거움으로 가득합니다.<br>당신의 학교 생활을 더 나은 경험으로 만들어 드립니다!<br><br><br><br><br><br></p>
         <h2 style="margin-left: 100px; color: #ffffff;">매일이 즐거운<br>🍴급.식.시.간.</h2>
         <p style="margin-left: 80px;">오늘의 급식을 DEOGLE에서 확인하고 <span style="background: linear-gradient(to right, #007bff, #de03cc, #03de12); color: transparent; -webkit-background-clip: text;">messaGPT</span>의 급식 점수를 확인하세요.<br><br><br><br><br><br></p>
         <h2 style="text-align:center" class="section-title blur-effect">
@@ -1198,7 +1198,33 @@
             });
         });
         
-        // 모달 외부 클릭 시 닫기
+        // 모달 창 열고 닫기 함수
+        function toggleModal(modalId, action) {
+            const modal = document.getElementById(modalId);
+            if (action === 'open') {
+                modal.style.display = 'flex';
+            } else if (action === 'close') {
+                modal.style.display = 'none';
+            }
+        }
+
+        // 모달 열기 이벤트
+        document.querySelectorAll('.open-modal').forEach(button => {
+            button.addEventListener('click', () => {
+                const modalId = button.getAttribute('data-modal');
+                toggleModal(modalId, 'open');
+            });
+        });
+
+        // 모달 닫기 이벤트
+        document.querySelectorAll('.modal-close').forEach(span => {
+            span.addEventListener('click', () => {
+                const modalId = span.getAttribute('data-modal');
+                toggleModal(modalId, 'close');
+            });
+        });
+
+        // 모달 외부 클릭 시 닫기 이벤트
         window.addEventListener('click', (event) => {
             if (event.target.classList.contains('modal')) {
                 event.target.style.display = 'none'; // 모달 숨기기

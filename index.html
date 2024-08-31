@@ -5,8 +5,80 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Deogle - 더나은 덕인생활</title>
     <style>
+        /* 햄버거 메뉴 기본 스타일 */
+        .nav-toggle {
+            display: none; /* 기본적으로 숨김 */
+            font-size: 2em;
+            color: #ffffff;
+        }
 
-        
+        /* 반응형 디자인을 위한 미디어 쿼리 */
+        @media screen and (max-width: 768px) {
+            .typing-animation {
+                display: none!important; /* 모바일에서는 타이핑 애니메이션 숨기기 */
+            }
+            img {
+                max-width: 80%!important; /* 이미지가 화면 너비를 넘지 않도록 제한 */
+                height: auto!important; /* 이미지의 비율을 유지하면서 높이 조정 */
+                display: block!important; /* 이미지를 블록 요소로 변환 */
+                margin-left: auto!important; /* 왼쪽 여백 자동 */
+                margin-right: auto!important; /* 오른쪽 여백 자동 */
+            }
+            .nav-links {
+                display: none !important; /* !important를 사용해 우선순위 높이기 */
+                flex-direction: column;
+                gap: 10px;
+                width: 100%;
+                text-align: left;
+            }
+            header {
+                padding: 10px 0;
+            }
+            nav {
+                flex-direction: column;
+                align-items: center; /* 모바일에서 메뉴를 가운데 정렬 */
+            }
+            .logo {
+                display: none;
+            }
+            .nav-links.active {
+                display: flex !important; /* 햄버거 메뉴를 클릭했을 때만 메뉴가 나타남 */
+            }
+            .nav-toggle {
+                display: block; /* 모바일에서 햄버거 메뉴 아이콘 표시 */
+                cursor: pointer;
+            }
+            .hero h1 {
+                font-size: 2.5em;
+            }
+            .hero p {
+                font-size: 1.2em;
+            }
+            .cta-button {
+                font-size: 1em;
+                padding: 10px 20px;
+            }
+            .features .feature h2,
+            .pricing-plan h2,
+            .contact h2 {
+                font-size: 1.3em;
+            }
+            .features .feature p,
+            .pricing-plan p,
+            .contact p {
+                font-size: 0.9em;
+            }
+            .services h2,
+            .services p {
+                font-size: 1.2em!important; /* 서비스 섹션의 텍스트 크기를 줄임 */
+                padding-left: 20px;
+                padding-right: 20px;
+                text-align: center; /* 텍스트를 가운데 정렬 */
+            }
+            .services h2 {
+                font-size: 1.5em; /* 제목의 크기를 조금 더 키움 */
+            }
+        }
 
         @font-face {
             font-family: 'LINESeedKR-Bd';
@@ -800,12 +872,12 @@
         .rotating-gradient {
             font-size: 1.8em;
             font-weight: bold;
-            background: linear-gradient(20deg, #5cff82, #0048ff);
-            background-size: 400%; /* 애니메이션 범위를 넓게 설정 */
+            background: linear-gradient(20deg, #007bff, #de03cc, #03de12);
+            background-size: 900%; /* 애니메이션 범위를 넓게 설정 */
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             display: inline-block;
-            animation: rotateGradient 4s linear infinite;
+            animation: rotateGradient 7s linear infinite;
         }
 
         @keyframes rotateGradient {
@@ -861,18 +933,19 @@
             max-width: 300px;
             margin-left: 20px;
         }
+        
     </style>
 </head>
 <body>
     <!-- 헤더 -->
     <header id="header">
         <nav>
-            <div class="logo">DEOGLE</div> <!-- 로고가 스크롤 시 사라짐 -->
-            <ul class="nav-links">
+            <div class="nav-toggle">&#9776;</div> <!-- 햄버거 메뉴 아이콘 -->
+            <div class="logo">DEOGLE</div>
+            <ul class="nav-links"> <!-- 네비게이션 링크들 -->
                 <li><a href="#hero" class="scroll-link">HOME</a></li>
                 <li><a href="#meal-info" class="scroll-link">오늘의 급식</a></li>
                 <li><a href="#services" class="scroll-link">DEOGLE이란?</a></li>
-                <li><a href="#" id="login-link" class="scroll-link" style="color: #1966f7;">LOGIN</a></li>
             </ul>
         </nav>
     </header>
@@ -884,10 +957,9 @@
             <br>
             <br>
             <br>
-            <h1>더나은 덕인생활,<br><span class="rotating-gradient" style="opacity: 0.8;">DEOGLE</span></h1>
+            <h1>더나은 덕인생활,<br><span style="color: #01e188;">DEOGLE</span></h1>
             <p>가장 진보된 AI <span style="background: linear-gradient(to right, #007bff, #de03cc, #03de12); color: transparent; -webkit-background-clip: text;">messaGPT</span> 와 함께하는 학교생활</p>
-            <button id="check-meal" class="cta-button">급식 확인</button>
-            <!--<a  href="https://xn----bs8e5np8ysmp0pkj1g.kro.kr/" class="cta-button">덕인 커뮤니티 입장</a>-->
+            <a  href="https://xn----bs8e5np8ysmp0pkj1g.kro.kr/" class="cta-button">커뮤니티 입장</a>
         </div>
     </section>
 
@@ -922,15 +994,12 @@
     </section>
 
     <br>
-
-    <section id="write-post" class="write-post">
-        <div class="write-post-container">
-            <h2 style="text-align: left;">📄글 작성하기</h2>
-            <form class="write-post-form">
-                <textarea class="post-content" placeholder="내용을 입력하세요" required style="background-color: #1a1a1a; color: white;"></textarea>
-                <button type="submit" class="submit-button">글 작성</button>
-            </form>
-        </div>
+    
+    <!-- DEOGLE comunity 색션 -->
+    <section id="donor-list" class="donor-list">
+        <h2>덕인의 소통공간 <span style="color: #01e188">DEOGLE</span> <span style="color: #f756ff;">comunity</span></h2>
+        <p>#덕instagram #MZ들의 성지</p>
+        <a href="https://xn----bs8e5np8ysmp0pkj1g.kro.kr" class="cta-button">지금 시작하기</a>
     </section>
 
     <br>
@@ -956,30 +1025,32 @@
     <br>
 
     <section id="services" class="services">
-        <br><br><br><br><br><br>
-        <h2 style="margin-left: 100px;" class="section-title typing-animation">
+        <br><br><br>
+        <h2 style="margin-left: 6.5%;" class="section-title typing-animation">
             <span style="background: linear-gradient(to right, #00e6b0,#c2dfff); color: transparent; -webkit-background-clip: text;">
                 덕인고 안에서 만들어진 혁신,
             </span>
         </h2>
-        <img src="https://github.com/user-attachments/assets/c31cfd68-9805-4865-9346-f21ccf7d9398" alt="해커 단체사진" style="max-width: 300px; margin-left: 100px;"></div>
-        <p style="margin-left: 80px;">덕인고등학교 <span onclick="location.href='http://easter-egg-game.kro.kr/'"; style="color:#de0387">HACKER</span> 동아리 학생들이 주도하여 개발한 혁신적인 플랫폼입니다.<br>학생들이 직접 참여하여 의견을 나누고, 서로의 경험을 통해 성장할 수 있는 공간을 제공합니다.<br> AI 기술을 활용하여 맞춤형 학습 지원과 정보 검색이 가능하여 단순한 커뮤니티를 넘어,<br>학교 생활을 더욱 풍요롭게 만드는 혁신적인 플랫폼 입니다.<br><br><span>* 이스터에그를 찾아보세요!</span><br><br><br><br></p>
-        <h2 style="text-align: right; margin-right: 100px; color: #ffffff;">매일이 즐거운<br><span style="color:#de03cc">커뮤니티</span></h2>
-        <p style="text-align: right; margin-right: 80px;"><span style="color: #01e188;">DEOGLE</span> 커뮤니티와 함께라면 매일이 새로운 발견과 즐거움으로 가득합니다.<br>당신의 학교 생활을 더 나은 경험으로 만들어 드립니다!<br><br><br><br><br><br></p>
-        <h2 style="margin-left: 100px; color: #ffffff;">언제나 설래는<br>🍴급.식.시.간.</h2>
-        <img src="https://github.com/user-attachments/assets/a427e2ef-a8a8-4502-b757-d4f2b69aeed5" alt="해커 단체사진" style="max-width: 300px; margin-right: 100px;"></div>
-        <p style="margin-left: 80px;">하루의 피로를 날려주는 맛있는 급식 시간! 이제는 기다리는 것만으로도 설레는 시간이 됩니다.<br><span style="color: #01e188;">DEOGLE</span>은 학생 여러분을 위해 오늘의 급식 메뉴를 가장 먼저 쉽게 확인할 수 있는 공간을 제공합니다.<br>뿐만 아니라, AI가 직접 매긴 급식 점수를 통해 오늘의 메뉴를 더욱 흥미롭게 즐길 수 있습니다.<br>학업에 지친 당신을 위한 작은 행복, DEOGLE과 함께라면 급식 시간은 언제나 특별합니다!<br><br><br><br><br><br></p>
-        <h2 style="text-align: right; margin-right: 100px; color: #ffffff;">덕인의 자랑,<br><span style="background: linear-gradient(to right, #007bff, #de03cc, #03de12); color: transparent; -webkit-background-clip: text;">messaGPT</span></h2>
-        <p style="text-align: right; margin-right: 80px;">덕인고의 자부심, messaGPT가 여러분의 학교 생활을 한층 더 스마트하게 만들어 드립니다.<br>가장 진보된 AI 기술을 바탕으로, messaGPT는 학생들의 질문에 빠르고 정확하게 답변을 공합니다.<br>이제, 단순한 검색을 넘어 messaGPT와 함께 더욱 풍요로운 학교 생활을 경험하세요. <br><br><br><br><br><br></p>
+        <img src="https://github.com/user-attachments/assets/c31cfd68-9805-4865-9346-f21ccf7d9398" alt="해커 단체사진" style="max-width: 300px; margin-left: 6.5%;"></div>
+        <p style="margin-left: 5%;">덕인고등학교 <span onclick="location.href='http://easter-egg-game.kro.kr/'"; style="color:#de0387">HACKER</span> 동아리 학생들이 주도하여 개발한 혁신적인 플랫폼입니다.<br>학생들이 직접 참여하여 의견을 나누고, 서로의 경험을 통해 성장할 수 있는 공간을 제공합니다.<br> AI 기술을 활용하여 맞춤형 학습 지원과 정보 검색이 가능하여 단순한 커뮤니티를 넘어,<br>학교 생활을 더욱 풍요롭게 만드는 혁신적인 플랫폼 입니다.<br><br><span>* 이스터에그를 찾아보세요!</span><br><br><br><br></p>
+        <h2 style="text-align: right; margin-right: 6.5%; color: #ffffff;">매일이 즐거운<br><span style="color:#de03cc">커뮤니티</span></h2>
+        <p style="text-align: right; margin-right: 5%;"><span style="color: #01e188;">DEOGLE</span> 커뮤니티와 함께라면 매일이 새로운 발견과 즐거움으로 가득합니다.<br>당신의 학교 생활을 더 나은 경험으로 만들어 드립니다!<br><br><br><br><br><br></p>
+        <h2 style="margin-left: 6.5%; color: #ffffff;">언제나 설래는<br>🍴급.식.시.간.</h2>
+        <img src="https://github.com/user-attachments/assets/a427e2ef-a8a8-4502-b757-d4f2b69aeed5" alt="즐겁다 사진" style="max-width: 300px; margin-right: 6.5%;"></div>
+        <p style="margin-left: 5%;">하루의 피로를 날려주는 맛있는 급식 시간! 이제는 기다리는 것만으로도 설레는 시간이 됩니다.<br><span style="color: #01e188;">DEOGLE</span>은 학생 여러분을 위해 오늘의 급식 메뉴를 가장 먼저 쉽게 확인할 수 있는 공간을 제공합니다.<br>뿐만 아니라, AI가 직접 매긴 급식 점수를 통해 오늘의 메뉴를 더욱 흥미롭게 즐길 수 있습니다.<br>학업에 지친 당신을 위한 작은 행복, DEOGLE과 함께라면 급식 시간은 언제나 특별합니다!<br><br><br><br><br><br></p>
+        <h2 style="text-align: right; margin-right: 6.5%; color: #ffffff;">덕인의 자랑,<br><span class="rotating-gradient">messaGPT</span></h2>
+        <p style="text-align: right; margin-right: 5%;">덕인고의 자부심, messaGPT가 여러분의 학교 생활을 한층 더 스마트하게 만들어 드립니다.<br>가장 진보된 AI 기술을 바탕으로, messaGPT는 학생들의 질문에 빠르고 정확하게 답변을 공합니다.<br>이제, 단순한 검색을 넘어 messaGPT와 함께 더욱 풍요로운 학교 생활을 경험하세요. <br><br><br><br><br><br></p>
         <h2 style="text-align:center" class="section-title blur-effect">
             <span style="color: #ffffff"><br>결국엔,</span><br>DEOGLE
-        </h2> 
+        </h2>
         <p style="text-align:center"><br>국내 최초의 유일무이한 학교 커뮤니티 AI 사이트<br>지금 바로 <span style="color: #01e188;">DEOGLE</span>에서 새로운 경험을 누려보세요!<br><br><br><br><br><br></p>
-    </section>
+        </section>
 
     <br>
     <br>
     <br>
+
+    <a id="check-meal" class="cta-button" style="display: none;">급식 확인</a>
 
     <!-- 문의 섹션 -->
     <section id="contact" class="contact">
@@ -1005,7 +1076,7 @@
             <a>
                 <h2>📃 개발자 정보</h2>
             </a>
-            <a href="http://easter-egg-game.kro.kr/" style="text-decoration: none; color: #989898;"> 1. 2024(DEOGLE v1) - 윤보배(프론트앤드) , 노광희(백앤드)</a>
+            <a href="http://easter-egg-game.kro.kr/" style="text-decoration: none; color: #989898;"> 1. 2024(DEOGLE v1) - 윤보배 , 노광희</a>
             <p> 2. ? ( 개발자 구인중... - 시급 100원[규호쌤이 지급] )</p>
         </div>
     </div>
@@ -1071,6 +1142,11 @@
 
     <!-- JavaScript -->
     <script>
+        // 햄버거 메뉴 클릭 이벤트
+        document.querySelector('.nav-toggle').addEventListener('click', function() {
+            this.classList.toggle('active');
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
         // 나이스 API를 통해 급식 정보 가져오기
         const apiUrl = 'https://open.neis.go.kr/hub/mealServiceDietInfo';
         const params = {
